@@ -1,4 +1,6 @@
 import streamlit as st
+import pandas as pd
+
 
 st.set_page_config(layout="wide")
 
@@ -7,6 +9,10 @@ col3, col4 = st.columns(2)
 
 with col1:
     st.image("image/photo.png")
+    content2 = """"
+    اله اینه که وقتی خدایگان یونیکس تصمیم گرفتن روشی برای زمان‌سنجی اختراع کنن، ")
+    """
+    st.write(content2)
 
 with col2:
     st.title("About title")
@@ -20,5 +26,11 @@ with col2:
 
     st.info(content)
 
+df = pd.read_csv("data.csv", sep=";")
+
 with col3:
-    st.text("مساله اینه که وقتی خدایگان یونیکس تصمیم گرفتن روشی برای زمان‌سنجی اختراع کنن، ")
+    for index, row in df[:10].iterrows():
+        st.header(row["title"])
+with col4:
+    for index, row in df[10:].iterrows():
+        st.header(row["title"])
